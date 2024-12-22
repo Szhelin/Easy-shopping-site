@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZshopping-购物车</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?gh2378');
+      src: url('fonts/icomoon.eot?gh2378#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?gh2378') format('truetype'),
+        url('fonts/icomoon.woff?gh2378') format('woff'),
+        url('fonts/icomoon.svg?gh2378#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+
+    .demo {
+      font-family: 'icomoon';
+      font-size: 20px;
+      font-style: normal;
+      font-display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: #e4f0ff;
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .xtx_footer .extra {
+      background-color: #333;
+      position: absolute;
+      width: 100%;
+    }
+
+    .xtx_footer .foot {
+      height: 100px;
+      padding-top: 40px;
+      text-align: center;
+      color: #999;
+      font-size: 15px;
+    }
+
+    .xtx_footer .foot p {
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .xtx_footer .foot a {
+      text-decoration: none;
+      color: #999;
+      line-height: 1;
+      padding: 0 10px 0 6px;
+      border-right: 1px solid #999;
+    }
+
+    .xtx_footer .foot a:last-child {
+      border-right: none;
+    }
+
+    .body {
+      position: relative;
+    }
+
+    .top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+      /* width: 60%; */
+      height: 130px;
+      margin: 0 auto;
+    }
+
+    .name {
+      position: absolute;
+      left: 15%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .name img {
+      width: 80px;
+      height: 80px;
+      border: 3px solid #ff7a2b;
+      border-radius: 30px;
+    }
+
+    .name span {
+      color: #ff7a2b;
+      font: 35px 'Tahoma';
+      font-weight: bolder;
+      margin-left: 10px;
+    }
+
+
+    .nav {
+      background-color: #333333;
+      /* border: 1px solid transparent;
+      border-radius: 10px; */
+      overflow: hidden;
+      position: relative;
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .navl {
+      position: absolute;
+      left: 150px;
+    }
+
+    .navl span a {
+      color: white;
+    }
+
+    .navl span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr {
+      position: absolute;
+      right: 150px;
+    }
+
+    .navr span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr span a {
+      color: white;
+    }
+
+    .nav a:hover {
+      color: red;
+    }
+
+    .searchTag {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      right: 15%;
+      width: 300px;
+      height: 44px;
+      /* line-height: 44px; */
+      border: 2px solid #ff7a2b;
+      border-radius: 12px;
+    }
+
+    .searchTag .demo {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .searchTag input {
+      border: none;
+      background-color: #e4f0ff;
+      width: 200px;
+      height: 34px;
+      /* padding: 9px 0; */
+      color: #11192d;
+      font-size: 14px;
+      line-height: 34px;
+      text-indent: 12px;
+      vertical-align: middle;
+    }
+
+    .searchTag input:focus {
+      border: none;
+      outline: none;
+    }
+
+    .searchTag button {
+      /* float: right; */
+      /* right: 10px; */
+      margin-left: 5px;
+      width: 60px;
+      height: 40px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: 1px solid red;
+      border-radius: 12px;
+    }
+
+    .info {
+      padding-left: 15%;
+      padding-right: 15%;
+      /* height: 2000px; */
+    }
+
+    /* .box {
+      height: 800px;
+    } */
+
+    .box .thing {
+      position: relative;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      border-radius: 10px;
+    }
+
+    .box .thing:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .box .thing img {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #ff7a2b;
+      border-radius: 10px;
+      margin-left: 30px;
+    }
+
+    .word {
+      margin-left: 30px;
+    }
+
+    .word .cl {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      color: #999;
+      font-size: 17px;
+    }
+
+    .word .price {
+      display: block;
+      font-size: 25px;
+      color: red;
+    }
+
+    .num {
+      position: absolute;
+      right: 23%;
+    }
+
+    .num {
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      align-items: center;
+      text-align: center;
+      width: 35px;
+      height: 35px;
+      border: 2px solid #ff7a2b;
+      border-radius: 5px;
+    }
+
+    .delete {
+      position: absolute;
+      right: 5%;
+      color: white;
+      margin-left: 90px;
+      height: 50px;
+      width: 150px;
+      background-color: red;
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      align-items: center;
+      text-align: center;
+      border: 1px solid transparent;
+      border-radius: 10px;
+    }
+
+    .thing input {
+      font-size: 25px;
+      width: 25px;
+      height: 25px;
+      margin-left: 10px;
+    }
+
+    .footer {
+      margin-top: 310px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100px;
+      background-color: #ff7a2b;
+      border: 1px solid transparent;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .footer .all {
+      margin-left: 100px;
+      font-size: 20px;
+      color: white;
+    }
+
+    .footer .all input {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .footer .res {
+      margin-right: 100px;
+      color: white;
+    }
+
+    .footer .res button {
+      margin-left: 20px;
+      width: 200px;
+      height: 50px;
+      background-color: red;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      color: white;
+      font-size: 20px;
+    }
+
+    .nt {
+      width: 400px;
+      height: 120px;
+      /* line-height: 100px; */
+      margin: 100px auto;
+      text-align: center;
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 统一顶部导航栏 -->
+  <div class="nav">
+    <div class="navl">
+      <span><a href="login.html"><span class="demo"></span>你好，请登录</a></span>
+      <span>|</span>
+      <span style="color: red;"><a href="reg.html"><span class="demo"></span>免费注册</a></span>
+    </div>
+    <div class="navr">
+      <span><a href="index.html"><span class="demo"></span>返回首页</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>我的订单</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>消息</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>反馈</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>设置</a></span>
+    </div>
+  </div>
+  <div class="body">
+    <!-- 商标和搜索 -->
+    <div class="top">
+      <div class="name"><img src="images/logo.jpg" alt=""><span>EZshopping——购物车（0）</span></div>
+      <div class="searchTag">
+        <span class="demo"></span>
+        <form action="http://baidu.com">
+          <input type="text" name="ss" id="ss" placeholder="探索购物车商品">
+          <button>搜索</button>
+        </form>
+      </div>
+    </div>
+    <!-- 渲染商品 -->
+    <div class="info">
+      <div class="box"></div>
+      <div class="nt">
+        <span class="demo" style="font-size: 30px;"></span>
+        <span>你的购物车空空如也~<br>404 NOT FOUND</span>
+      </div>
+      <div class="footer">
+        <div class="all"><input type="checkbox">全选</div>
+        <div class="res">
+          <div class="sum">
+            <span>合计：￥</span>
+            <span class="summoney">0.00</span>
+            <button><span class="demo"></span>提交订单</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- 统一底部 -->
+  <div class="xtx_footer clearfix">
+    <div class="extra">
+      <div class="wrapper">
+        <div class="foot">
+          <p>
+            <a href="#">关于我们</a>
+            <a href="#">帮助中心</a>
+            <a href="#">售后服务</a>
+            <a href="#">配送与验收</a>
+            <a href="#">商务合作</a>
+            <a href="#">搜索推荐</a>
+            <a href="#">友情链接</a>
+          </p>
+          <p>Copyright &copy; EZshopping</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    //登录成功
+    let NAME = localStorage.getItem('username')
+    const navl = document.querySelector('.navl')
+    const rr = document.querySelector('.rr')
+    if (NAME != '') {
+      navl.innerHTML = `
+        <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
+        <span>|</span>
+        <span style="color: red;" class="change"><a href="#"><span class="demo"></span>退出</a></span>
+      `
+      document.querySelector('.change').addEventListener('click', () => {
+        localStorage.setItem('username', '')
+        localStorage.setItem('goodscart', JSON.stringify(''))
+        location.reload()
+      })
+    }
+    //渲染
+    const box = document.querySelector('.box')
+    let Good = JSON.parse(localStorage.getItem('goods'))
+    let goodsNum = +localStorage.getItem('goodsNum')
+    const thing = document.querySelector('.thing')
+    const arr = JSON.parse(localStorage.getItem('goodscart')) || []
+    //页面渲染函数
+    function render() {
+      document.querySelector('.name span').textContent = `EZshopping——购物车（${arr.length}）`
+      const Arr = arr.map(function (ele, index) {
+        return `
+        <div class="thing">
+          <input type="checkbox" name="" id="">
+          <img src="${ele.picture}" alt="">
+          <div class="word">
+            <h2>${ele.p}</h2>
+            <span class="cl">${ele.name};[官方标配]</span>
+            <span class="price">￥${ele.price}</span>
+          </div>
+          <div class="num">
+            <span>x</span>
+            <span class="n">${ele.num}</span>
+          </div>
+          <div class="delete" data-id=${index}><span class="demo"></span><span>删除</span></div>
+        </div>
+        `
+      })
+      box.innerHTML = Arr.join('')
+    }
+    render()
+    if (arr.length === 0) document.querySelector('.nt').style.display = 'block'
+    else document.querySelector('.nt').style.display = 'none'
+    const btn = document.querySelectorAll('.delete')
+    for (let jj = 0; jj < arr.length; jj++) {
+      btn[jj].addEventListener('click', function (e) {
+        if (e.target.tagName === 'DIV') {
+          let num = e.target.dataset.id
+          if (confirm('你确定要删除这条数据吗')) {
+            arr.splice(e.target.dataset.id, 1)
+            localStorage.setItem('goodscart', JSON.stringify(arr))
+            render()
+            location.reload()
+          }
+        }
+        else if (e.target.tagName === 'SPAN') {
+          let num = e.target.parentNode.dataset.id
+          if (confirm('你确定要删除这条数据吗')) {
+            arr.splice(e.target.parentNode.dataset.id, 1)
+            localStorage.setItem('goodscart', JSON.stringify(arr))
+            render()
+            location.reload()
+          }
+        }
+      })
+    }
+
+    //选中图标
+    // const choose = document.querySelectorAll('.box .thing')
+    // for (let ii = 0; ii < choose.length; ii++) {
+    //   let flag = true
+    //   choose[ii].addEventListener('click', e => {
+    //     if (e.target.tagName === 'INPUT') {
+    //       if (e.target.checked) {
+    //         flag = false
+    //         e.target.parentNode.style.borderColor = '#ff7a2b'
+    //         e.target.parentNode.style.transform = 'translateY(-2px)'
+    //         e.target.parentNode.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'
+    //       }
+    //       else {
+    //         flag = true
+    //         e.target.parentNode.style.borderColor = 'transparent'
+    //         e.target.parentNode.style.transform = ''
+    //         e.target.parentNode.style.boxShadow = ''
+    //       }
+    //     }
+    //   })
+    //   if (flag === true) {
+    //     choose[ii].addEventListener('mouseenter', e => {
+    //       choose[ii].style.transform = 'translateY(-2px)'
+    //       choose[ii].style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'
+
+    //     })
+    //     choose[ii].addEventListener('mouseleave', e => {
+    //       choose[ii].style.transform = ''
+    //       choose[ii].style.boxShadow = ''
+    //     })
+    //   }
+    // }
+    //全选
+    const choice = document.querySelectorAll('.thing input')
+    const all = document.querySelector('.all input')
+    const choose = document.querySelectorAll('.box .thing')
+    let moneySum = 0
+    all.addEventListener('click', function (e) {
+      for (let i = 0; i < choice.length; i++) {
+        choice[i].checked = all.checked
+        if (choice[i].checked) {
+          moneySum += +arr[i].price * +arr[i].num
+          choice[i].parentNode.style.borderColor = '#ff7a2b'
+          choice[i].parentNode.style.transform = 'translateY(-2px)'
+          choice[i].parentNode.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'
+        }
+        else {
+          choice[i].parentNode.style.borderColor = 'transparent'
+          choice[i].parentNode.style.transform = 'translateY(0px)'
+          choice[i].parentNode.style.boxShadow = 'none'
+        }
+      }
+      if (all.checked) {
+        document.querySelector('.summoney').textContent = moneySum
+      }
+      else {
+        moneySum = 0
+        document.querySelector('.summoney').textContent = moneySum
+      }
+      e.stopPropagation()
+    })
+    for (let i = 0; i < choice.length; i++) {
+      choose[i].addEventListener('click', function (e) {
+        if (choice[i].checked) {
+          moneySum += +arr[i].price * +arr[i].num
+          choice[i].parentNode.style.borderColor = '#ff7a2b'
+          choice[i].parentNode.style.transform = 'translateY(-2px)'
+          choice[i].parentNode.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'
+        }
+        else {
+          moneySum -= +arr[i].price * +arr[i].num
+          choice[i].parentNode.style.borderColor = 'transparent'
+          choice[i].parentNode.style.transform = 'translateY(0px)'
+          choice[i].parentNode.style.boxShadow = 'none'
+        }
+        all.checked = document.querySelectorAll('.thing input:checked').length === choice.length
+        e.stopPropagation()
+        document.querySelector('.summoney').textContent = moneySum
+      })
+    }
+    // for (let i = 0; i < choice.length; i++) {
+    //   choose[i].addEventListener('mouseenter', function (e) {
+    //     choice[i].parentNode.style.borderColor = 'transparent'
+    //     choice[i].parentNode.style.transform = 'translateY(-2px)'
+    //     choice[i].parentNode.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'
+    //   })
+    //   choice[i].addEventListener('mouseleave', function (e) {
+    //     choice[i].parentNode.style.borderColor = 'transparent'
+    //     choice[i].parentNode.style.transform = 'translateY(0px)'
+    //     choice[i].parentNode.style.boxShadow = 'none'
+    //   })
+    // }
+    //跳转结算  
+    localStorage.setItem('goodsbill', JSON.stringify(''))
+    let a = JSON.parse(localStorage.getItem('goodsbill')) || []
+    document.querySelector('.sum button').addEventListener('click', () => {
+      let f = false
+      localStorage.setItem('bill', moneySum)
+      for (let cnt = 0; cnt < arr.length; cnt++) {
+        if (choice[cnt].checked) {
+          f = true
+          a.push({
+            p: arr[cnt].p,
+            name: arr[cnt].name,
+            price: arr[cnt].price,
+            picture: arr[cnt].picture,
+            inventory: arr[cnt].inventory,
+            num: arr[cnt].num
+          })
+        }
+      }
+      if (f === true) {
+        localStorage.setItem('goodsbill', JSON.stringify(a))
+        location.href = 'order.html'
+      }
+
+    })
+  </script>
+</body>
+
+</html>

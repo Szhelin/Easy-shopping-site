@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZshopping-首页</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.jpg">
+  <style>
+    html {
+      scroll-behavior: smooth;
+      background-color: #e4f0ff;
+    }
+
+    /* .bigBox {
+      background-color: #e4f0ff;
+    } */
+
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?gh2378');
+      src: url('fonts/icomoon.eot?gh2378#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?gh2378') format('truetype'),
+        url('fonts/icomoon.woff?gh2378') format('woff'),
+        url('fonts/icomoon.svg?gh2378#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+
+    .demo {
+      font-family: 'icomoon';
+      font-size: 20px;
+      font-style: normal;
+      font-display: block;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .body {
+      position: relative;
+      /* width: 88%; */
+      padding-left: 90px;
+      padding-right: 90px;
+      /* height: 3000px; */
+      margin: 0 auto;
+      background-color: #e4f0ff;
+    }
+
+    .ad {
+      height: 70px;
+      background-color: #fce62b;
+      /* border: 1px solid transparent;
+      border-radius: 10px; */
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .w {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .w .demo {
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      font-style: normal;
+      border: 2px solid #ff7a2b;
+      border-radius: 10px;
+      position: absolute;
+      left: 120%;
+      top: 0%;
+    }
+
+    .adw {
+      margin-left: 30px;
+      color: #ff7a2b;
+      font-weight: bolder;
+      font-size: 30px;
+    }
+
+    .search {
+      height: 100px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    form {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .name {
+      position: absolute;
+      left: 1%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .name img {
+      width: 80px;
+      height: 80px;
+      border: 3px solid #ff7a2b;
+      border-radius: 30px;
+    }
+
+    .name span {
+      color: #ff7a2b;
+      font: 35px 'Tahoma';
+      font-weight: bolder;
+      margin-left: 10px;
+    }
+
+    .navv {
+      display: block;
+      width: 230px;
+      height: 50px;
+      line-height: 50px;
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+      text-decoration: none;
+      text-indent: 1.5em;
+    }
+
+    .navv:hover {
+      background-color: #d75e00;
+    }
+
+    .pilot {
+      position: relative;
+      display: flex;
+      width: 1500px;
+      /* height: 280px; */
+      margin: 30px auto;
+      /* border: 1px solid transparent;
+      border-radius: 20px; */
+    }
+
+    /* .l {
+      float: left;
+    } */
+    .ll {
+      position: absolute;
+      left: 230px;
+      width: 500px;
+      height: 500px;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 2;
+      color: white;
+      display: none;
+    }
+
+    .r {
+      /* float: left; */
+      width: 1000px;
+      height: 500px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .searchTag {
+      width: 800px;
+      height: 44px;
+      line-height: 44px;
+      border: 2px solid #ff7a2b;
+      border-radius: 12px;
+    }
+
+    .searchTag .demo {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .searchTag input {
+      float: left;
+      border: none;
+      background-color: #e4f0ff;
+      width: 660px;
+      height: 34px;
+      /* padding: 9px 0; */
+      color: #11192d;
+      font-size: 14px;
+      line-height: 34px;
+      text-indent: 12px;
+      vertical-align: middle;
+    }
+
+    .searchTag input:focus {
+      border: none;
+      outline: none;
+    }
+
+    .searchTag button {
+      float: right;
+      right: 10px;
+      margin-left: 20px;
+      width: 80px;
+      height: 40px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: 1px solid red;
+      border-radius: 12px;
+    }
+
+    .elevator {
+      position: absolute;
+      right: 1px;
+      top: 250px;
+      width: 75px;
+      background-color: #ff7a2b;
+      color: white;
+      border: 1px solid #ff7a2b;
+      border-radius: 15px;
+    }
+
+    .elevatorList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .elevatorList li {
+      margin: 10px 0;
+      height: 50px;
+      width: 75px;
+      text-align: center;
+      border-collapse: collapse;
+    }
+
+    .top {
+      display: none;
+    }
+
+    .nav {
+      background-color: #333333;
+      /* border: 1px solid transparent;
+      border-radius: 10px; */
+      overflow: hidden;
+      position: relative;
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .navl {
+      position: absolute;
+      left: 150px;
+    }
+
+    .navl span a {
+      color: white;
+    }
+
+    .navl span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr {
+      position: absolute;
+      right: 150px;
+    }
+
+    .navr span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr span a {
+      color: white;
+    }
+
+    .nav a:hover {
+      color: red;
+    }
+
+    .rr {
+      background-color: #f5f5f5;
+      width: 260px;
+      height: 494px;
+      margin-left: 5px;
+      border: 3px solid #ff7a2b;
+      border-radius: 10px;
+    }
+
+    .r .rImg {
+      position: relative;
+    }
+
+    .r .rImg img {
+      width: 1000px;
+      height: 500px;
+    }
+
+    .r .rImg .next {
+      position: absolute;
+      top: 235px;
+      right: 4%;
+      color: white;
+    }
+
+    .r .rImg .last {
+      position: absolute;
+      top: 235px;
+      left: 4%;
+      color: white;
+    }
+
+    .dot {
+      position: absolute;
+      left: 350px;
+      bottom: 3%;
+      display: flex;
+      width: 300px;
+      flex-direction: row;
+      justify-content: space-between;
+      list-style: none;
+      /* color: rgba(0, 0, 0, 0.2); */
+    }
+
+    .dot li {
+      width: 80px;
+      height: 4px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      background-color: gray;
+    }
+
+    .dot .active {
+      background-color: #ff7a2b;
+    }
+
+    .xtx_footer .extra {
+      background-color: #333;
+    }
+
+    .xtx_footer .foot {
+      height: 150px;
+      padding-top: 40px;
+      text-align: center;
+      color: #999;
+      font-size: 15px;
+    }
+
+    .xtx_footer .foot p {
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .xtx_footer .foot a {
+      color: #999;
+      line-height: 1;
+      padding: 0 10px 0 6px;
+      border-right: 1px solid #999;
+    }
+
+    .xtx_footer .foot a:last-child {
+      border-right: none;
+    }
+
+
+    .smile img {
+      width: 100px;
+      height: 100px;
+      border: 3px solid transparent;
+      border-radius: 30px;
+    }
+
+    .smile {
+      display: flex;
+      align-items: center;
+      margin: 30px 20px;
+    }
+
+    .smile span {
+      margin-left: 20px;
+      font-size: 22px;
+    }
+
+    .wz {
+      text-align: center;
+    }
+
+    .an {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .an button {
+      text-align: center;
+      margin-top: 20px;
+      width: 180px;
+      height: 50px;
+      font-size: 20px;
+      background-color: red;
+      color: white;
+      border: 1px solid red;
+      border-radius: 12px;
+    }
+
+    .an img {
+      width: 250px;
+      height: 180px;
+      margin-top: 10px;
+    }
+
+    .goods {
+      margin: 0 40px;
+    }
+
+    .goodTab {
+      display: flex;
+      align-items: center;
+      color: #ff7a2b;
+      height: 50px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      /* background-color: #ff7a2b; */
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .goodTab h2 {
+      margin-left: 20px;
+    }
+
+    .gg {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .gg li {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+      width: 278px;
+      height: 380px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      /* background-color: rgba(0, 0, 0, 0.1); */
+    }
+
+    .gg li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .gg li img {
+      width: 260px;
+      height: 260px;
+      border: 1px solid transparent;
+      border-radius: 10px 10px 0px 0px;
+      margin-top: 5px;
+    }
+
+    .gg li .info {
+      width: 260px;
+      height: 50px;
+      font-size: 18px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gg li .price {
+      width: 260px;
+      height: 30px;
+      margin-top: 5px;
+      font-size: 25px;
+      color: red;
+    }
+
+    /* .ll {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    } */
+
+    .ll span {
+      display: block;
+      height: 30px;
+      margin: 10px 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bigBox">
+    <!-- 顶部广告 -->
+    <div class="ad">
+      <div class="w">
+        <img src="images/ad.jpg" alt="">
+        <span class="adw">购物节！！！&nbsp;&nbsp;好礼多多！！！</span>
+        <span class="demo" style="color: red;"></span>
+      </div>
+    </div>
+    <!-- 导航栏 -->
+    <div class="nav">
+      <div class="navl">
+        <span><a href="login.html"><span class="demo"></span>你好，请登录</a></span>
+        <span>|</span>
+        <span style="color: red;"><a href="reg.html"><span class="demo"></span>免费注册</a></span>
+      </div>
+      <div class="navr">
+        <span><a href="#"><span class="demo"></span>我的订单</a></span>
+        <span>|</span>
+        <span><a href="cart.html"><span class="demo"></span>购物车</a></span>
+        <span>|</span>
+        <span><a href="#"><span class="demo"></span>消息</a></span>
+        <span>|</span>
+        <span><a href="#"><span class="demo"></span>反馈</a></span>
+        <span>|</span>
+        <span><a href="#"><span class="demo"></span>设置</a></span>
+      </div>
+    </div>
+    <div class="body">
+      <!-- 图标和搜索栏 -->
+      <div class="search">
+        <div class="name"><img src="images/logo.jpg" alt=""><span>EZshopping</span></div>
+        <div class="searchTag">
+          <span class="demo"></span>
+          <form action="http://baidu.com">
+            <input type="text" name="ss" id="ss">
+            <button>搜索</button>
+          </form>
+        </div>
+      </div>
+      <!-- 侧边电梯导航 -->
+      <div class="elevator">
+        <ul class="elevatorList">
+          <li><span class="demo"></span><br><span>我的</span></li>
+          <li><span class="demo"></span><br><a href="cart.html" style="color: white;">购物车</a></li>
+          <li><span class="demo"></span><br><span>消息</span></li>
+          <li><span class="demo"></span><br><span>反馈</span></li>
+          <li><span class="demo"></span><br><span>设置</span></li>
+          <li class="top"><span class="demo"></span><br><span>回顶部</span></li>
+        </ul>
+      </div>
+      <!-- 侧边分类栏 -->
+      <div class="pilot">
+        <div class="l">
+          <a href="#" class="navv"><span class="demo"></span> 电脑 | 配件 | 办公 | 文具</a>
+          <a href="#" class="navv"><span class="demo"></span> 家电 | 手机 | 通讯 | 数码</a>
+          <a href="#" class="navv"><span class="demo"></span> 家具 | 家装 | 家居 | 厨具</a>
+          <a href="#" class="navv"><span class="demo"></span> 男装 | 女装 | 童装 | 配饰</a>
+          <a href="#" class="navv"><span class="demo"></span> 男鞋 | 女鞋 | 童鞋 | 户外</a>
+          <a href="#" class="navv"><span class="demo"></span> 汽车 | 珠宝 | 文玩 | 箱包</a>
+          <a href="#" class="navv"><span class="demo"></span> 食品 | 生鲜 | 酒类 | 健康</a>
+          <a href="#" class="navv"><span class="demo"></span> 美妆 | 个护 | 家清 | 香氛</a>
+          <a href="#" class="navv"><span class="demo"></span> 娱乐 | 图书 | 乐器 | 鲜花</a>
+          <a href="#" class="navv"><span class="demo"></span> 玩具 | 模型 | 益智 | 游戏</a>
+        </div>
+        <div class="ll">
+          <span>笔记本电脑 | 游戏本 | 平板电脑 | DIY电脑 | 服务器 | 工作站</span>
+          <span>显示器 | CPU | 主板 | 显卡 | 硬盘 | 内存 | 分类 | 机箱 | 电源</span>
+          <span>鼠标 | 键盘 | U盘 | 移动硬盘 | 摄像头 | 手写板 | USB电源</span>
+          <span>游戏机 | 游戏耳机 | 手柄 | 方向盘 | 游戏软件 | 游戏周边 | 手办</span>
+          <span>路由器 | 机顶盒 | 交换机 | 门禁 | 收银机 | 保险柜 | 安防监控类</span>
+          <span>显示器 | CPU | 主板 | 显卡 | 硬盘 | 内存 | 分类 | 机箱 | 电源</span>
+          <span>鼠标 | 键盘 | U盘 | 移动硬盘 | 摄像头 | 手写板 | USB电源</span>
+          <span>笔记本电脑 | 游戏本 | 平板电脑 | DIY电脑 | 服务器 | 工作站</span>
+          <span>显示器 | CPU | 主板 | 显卡 | 硬盘 | 内存 | 分类 | 机箱 | 电源</span>
+        </div>
+        <div class="r">
+          <div class="rImg">
+            <img src="images/xiaomi1.jpg" alt="">
+            <i class="next"><span class="demo" style="font-size: 30px"></span></i>
+            <i class="last"><span class="demo" style="font-size: 30px"></span></i>
+            <ul class="dot">
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="rr">
+          <div class="smile">
+            <img src="images/smile.jpg" alt="">
+            <span>你好,<br>请登录</span>
+          </div>
+          <div class="wz">
+            <h3>登录后更多精彩</h3>
+            <span>嘿！更懂你的推荐，更便捷的搜索</span>
+          </div>
+          <div class="an">
+            <button>立即登录！</button><br>
+            <img src="images/ez.png" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- 商品列表 -->
+      <div class="goods">
+        <div class="goodTab">
+          <h2><span class="demo"></span>商品推荐</h2>
+        </div>
+        <div class="renderGood">
+          <ul class="gg"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- 底部商标 -->
+    <div class="xtx_footer clearfix">
+      <div class="extra">
+        <div class="wrapper">
+          <div class="foot">
+            <p>
+              <a href="#">关于我们</a>
+              <a href="#">帮助中心</a>
+              <a href="#">售后服务</a>
+              <a href="#">配送与验收</a>
+              <a href="#">商务合作</a>
+              <a href="#">搜索推荐</a>
+              <a href="#">友情链接</a>
+            </p>
+            <p>Copyright &copy; EZshopping</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    //<span class="demo"></span>
+    //广告
+    const ad = document.querySelector('.ad')
+    const x = document.querySelector('.w .demo')
+    x.addEventListener('click', () => {
+      ad.style.display = 'none'
+    })
+    //侧边栏
+    const elevator = document.querySelector('.elevator')
+    const topp = document.querySelector('.top')
+    window.addEventListener('scroll', function () {
+      const n = document.documentElement.scrollTop
+      if (n >= 300) {
+        topp.style.display = 'block'
+        elevator.style.top = `${n + 250}px`
+      }
+      else {
+        elevator.style.top = `${n + 250}px`
+        topp.style.display = 'none'
+      }
+    })
+    topp.addEventListener('click', function () {
+      document.documentElement.scrollTop = 0
+      elevator.style.top = '250px'
+    })
+    //轮播图
+    const next = document.querySelector('.rImg .next')
+    const last = document.querySelector('.rImg .last')
+    const pic = document.querySelector('.rImg img')
+    const arrD = document.querySelectorAll('.rImg .dot li')
+    const big = document.querySelector('.rImg')
+    const arrImg = [
+      'images/xiaomi1.jpg',
+      'images/xiaomi2.jpg',
+      'images/xiaomi3.jpg'
+    ]
+    let i = 0
+    let timer = setInterval(function () {
+      next.click()
+    }, 5000)
+    next.addEventListener('click', function () {
+      i++
+      if (i < 0) { i = arrD.length - 1 }
+      else if (i > arrD.length - 1) { i = 0 }
+      pic.src = arrImg[i]
+      document.querySelector('.dot .active').classList.remove('active')
+      document.querySelector(`.dot li:nth-child(${i + 1})`).classList.add('active')
+    })
+    last.addEventListener('click', function () {
+      i--
+      if (i < 0) { i = arrD.length - 1 }
+      else if (i > arrD.length - 1) { i = 0 }
+      pic.src = arrImg[i]
+      document.querySelector('.dot .active').classList.remove('active')
+      document.querySelector(`.dot li:nth-child(${i + 1})`).classList.add('active')
+    })
+    big.addEventListener('mouseenter', function () {
+      clearInterval(timer)
+    })
+    big.addEventListener('mouseleave', function () {
+      timer = setInterval(function () {
+        next.click()
+      }, 5000)
+    })
+    //渲染商品
+    const goods = [
+      {
+        p: 'Sony WH-1000XM5头戴式耳机',
+        name: 'Sony/索尼 WH-1000XM5 高解析度无线降噪头戴耳机',
+        price: '2999.00',
+        picture: 'images/sony2.jpg',
+        inventory: '666'
+      },
+      {
+        p: 'Sony WH-CH720N头戴式耳机',
+        name: 'Sony/索尼 WH-CH720N 舒适高效 头戴式降噪耳机 长久佩戴',
+        price: '699.00',
+        picture: 'images/sony3.jpg',
+        inventory: '388'
+      },
+      {
+        p: 'Apple AirPods Max头戴式耳机',
+        name: 'Apple/苹果AirPods Max 头戴式无线蓝牙耳机Lightning接口',
+        price: '4399.00',
+        picture: 'images/apple1.jpg',
+        inventory: '999'
+      },
+      {
+        p: 'Apple AirPods 4 入耳式耳机',
+        name: 'Apple/苹果 AirPods 4 (支持主动降噪)',
+        price: '1399.00',
+        picture: 'images/apple2.jpg',
+        inventory: '897'
+      },
+      {
+        p: 'Apple AirPods Pro 2 入耳式耳机',
+        name: 'Apple/苹果 AirPods Pro 2',
+        price: '1899.00',
+        picture: 'images/apple3.jpg',
+        inventory: '3848'
+      },
+      {
+        p: '喜德盛2024款AD350公路自行车',
+        name: '喜德盛2024款AD350公路自行车铝合金20速油压碟刹竞速赛车',
+        price: '4688.00',
+        picture: 'images/xds.jpg',
+        inventory: '8848'
+      },
+      {
+        p: '捷安特25款十代TCR Adv Pro 0-AXS公路车',
+        name: '捷安特25款十代TCR Adv Pro 0-AXS碳纤维24速电变公路车',
+        price: '41800.00',
+        picture: 'images/giant.jpg',
+        inventory: '661'
+      },
+      {
+        p: 'REK崔克MADONE SL6公路车',
+        name: 'TREK崔克MADONE SL6碳纤维电变轻量破风气动竞赛级公路车',
+        price: '36668.00',
+        picture: 'images/trek1.jpg',
+        inventory: '48'
+      },
+      {
+        p: 'SPECIALIZED闪电S-WORKS TARMAC SL8 Di2公路车',
+        name: 'SPECIALIZED闪电S-WORKS TARMAC SL8 Di2碳纤维公路车',
+        price: '99990.00',
+        picture: 'images/sworks1.jpg',
+        inventory: '20'
+      },
+      {
+        p: 'COLNAGO 梅花 V3 公路车整车',
+        name: 'COLNAGO 梅花 V3 碳纤维公路车环法整车 UT油压碟刹 R8000',
+        price: '40039.00',
+        picture: 'images/colnago.jpg',
+        inventory: '33'
+      },
+      {
+        p: '乐高76909梅赛德斯奔驰积木',
+        name: '乐高76909梅赛德斯-AMG EPerrmance和梅赛德斯-AMG Project One',
+        price: '499.00',
+        picture: 'images/lego1.jpg',
+        inventory: '6890'
+      },
+      {
+        p: '乐高77092塞尔达传说旷野之息德库树积木',
+        name: '乐高官方旗舰店77092塞尔达传说旷野之息德库树积木',
+        price: '2499.00',
+        picture: 'images/lego2.jpg',
+        inventory: '45'
+      },
+      {
+        p: '乐高43230华特迪士尼摄影机致敬版积木',
+        name: 'LEGO乐高 迪士尼系列 43230华特迪士尼摄影机致敬版',
+        price: '488.00',
+        picture: 'images/lego3.jpg',
+        inventory: '99'
+      },
+      {
+        p: 'LEGO乐高10323吃豆人街机积木',
+        name: 'LEGO乐高10323吃豆人街机',
+        price: '1379.00',
+        picture: 'images/lego4.jpg',
+        inventory: '66'
+      },
+      {
+        p: '乐高31147复古相机积木',
+        name: '乐高官方旗舰店31147复古相机',
+        price: '159.00',
+        picture: 'images/lego5.jpg',
+        inventory: '2020'
+      }
+    ]
+    localStorage.setItem('goods', JSON.stringify(goods))
+    const goodList = document.querySelector('.gg')
+    for (let j = 0; j < goods.length; j++) {
+      let ggli = document.createElement('li')
+      ggli.innerHTML = `
+        <img src="${goods[j].picture}" alt="">
+        <span class="info">${goods[j].name}</span>
+        <span class="price">￥${goods[j].price}</span>
+      `
+      goodList.appendChild(ggli)
+    }
+    const goodli = document.querySelectorAll('.gg li')
+    for (let ii = 0; ii < goodli.length; ii++) {
+      goodli[ii].addEventListener('mouseenter', () => {
+        goodli[ii].style.borderColor = '#ff7a2b'
+      })
+    }
+    for (let ii = 0; ii < goodli.length; ii++) {
+      goodli[ii].addEventListener('mouseleave', () => {
+        goodli[ii].style.borderColor = 'transparent'
+      })
+    }
+    //悬浮栏
+    const box = document.querySelector('.l')
+    const smallbox = document.querySelector('.ll')
+    box.addEventListener('mouseenter', () => {
+      smallbox.style.display = 'block'
+    })
+    box.addEventListener('mouseleave', () => {
+      smallbox.style.display = 'none'
+    })
+    const lo = document.querySelector('.an button')
+    lo.addEventListener('click', () => {
+      location.href = 'login.html'
+    })
+    //登录成功
+    let NAME = localStorage.getItem('username')
+    const navl = document.querySelector('.navl')
+    const rr = document.querySelector('.rr')
+    if (NAME != '') {
+      navl.innerHTML = `
+        <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
+        <span>|</span>
+        <span style="color: red;" class="change"><a href="#"><span class="demo"></span>退出</a></span>
+      `
+      document.querySelector('.change').addEventListener('click', () => {
+        localStorage.setItem('username', '')
+        localStorage.setItem('goodscart', JSON.stringify(''))
+        location.reload()
+      })
+      rr.innerHTML = `
+        <div class="smile">
+          <img src="images/smile.jpg" alt="">
+          <span>你好,<br>${NAME}</span>
+        </div>
+        <div class="wz">
+          <h3>探索无限精彩</h3>
+          <span>嘿！更懂你的推荐，更便捷的搜索</span>
+        </div>
+        <div class="an">
+          <button>退出登录</button><br>
+          <img src="images/ez.png" alt="">
+        </div>
+      `
+      document.querySelector('.an button').addEventListener('click', () => {
+        localStorage.setItem('username', '')
+        location.reload()
+      })
+    }
+    //点击商品
+    const gli = document.querySelector('.gg li')
+    const gul = document.querySelector('.gg')
+    gul.addEventListener('click', function (e) {
+      //e.stopPropagation()
+      //console.log(e.target.parentNode.tagName)
+      if (e.target.tagName === 'LI') {
+        let kids = e.target.parentNode.children
+        let index = Array.from(kids).indexOf(e.target)
+        //console.log(index)
+        localStorage.setItem('goodsNum', index)
+        location.href = 'detail.html'
+      }
+      else if (e.target.parentNode.tagName === 'LI') {
+        let kids = e.target.parentNode.parentNode.children
+        let index = Array.from(kids).indexOf(e.target.parentNode)
+        //console.log(index)
+        localStorage.setItem('goodsNum', index)
+        location.href = 'detail.html'
+      }
+    })
+  </script>
+</body>
+
+</html>

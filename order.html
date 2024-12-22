@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZshopping-订单</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?gh2378');
+      src: url('fonts/icomoon.eot?gh2378#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?gh2378') format('truetype'),
+        url('fonts/icomoon.woff?gh2378') format('woff'),
+        url('fonts/icomoon.svg?gh2378#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+
+    .demo {
+      font-family: 'icomoon';
+      font-size: 20px;
+      font-style: normal;
+      font-display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: #e4f0ff;
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .xtx_footer .extra {
+      margin-top: 500px;
+      background-color: #333;
+      position: absolute;
+      width: 100%;
+    }
+
+    .xtx_footer .foot {
+      height: 100px;
+      padding-top: 40px;
+      text-align: center;
+      color: #999;
+      font-size: 15px;
+    }
+
+    .xtx_footer .foot p {
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .xtx_footer .foot a {
+      text-decoration: none;
+      color: #999;
+      line-height: 1;
+      padding: 0 10px 0 6px;
+      border-right: 1px solid #999;
+    }
+
+    .xtx_footer .foot a:last-child {
+      border-right: none;
+    }
+
+    .body {
+      position: relative;
+    }
+
+    .top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+      /* width: 60%; */
+      height: 130px;
+      margin: 0 auto;
+    }
+
+    .name {
+      position: absolute;
+      left: 15%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .name img {
+      width: 80px;
+      height: 80px;
+      border: 3px solid #ff7a2b;
+      border-radius: 30px;
+    }
+
+    .name span {
+      color: #ff7a2b;
+      font: 35px 'Tahoma';
+      font-weight: bolder;
+      margin-left: 10px;
+    }
+
+
+    .nav {
+      background-color: #333333;
+      /* border: 1px solid transparent;
+      border-radius: 10px; */
+      overflow: hidden;
+      position: relative;
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .navl {
+      position: absolute;
+      left: 150px;
+    }
+
+    .navl span a {
+      color: white;
+    }
+
+    .navl span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr {
+      position: absolute;
+      right: 150px;
+    }
+
+    .navr span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr span a {
+      color: white;
+    }
+
+    .nav a:hover {
+      color: red;
+    }
+
+    .searchTag {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      right: 15%;
+      width: 300px;
+      height: 44px;
+      /* line-height: 44px; */
+      border: 2px solid #ff7a2b;
+      border-radius: 12px;
+    }
+
+    .searchTag .demo {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .searchTag input {
+      border: none;
+      background-color: #e4f0ff;
+      width: 200px;
+      height: 34px;
+      /* padding: 9px 0; */
+      color: #11192d;
+      font-size: 14px;
+      line-height: 34px;
+      text-indent: 12px;
+      vertical-align: middle;
+    }
+
+    .searchTag input:focus {
+      border: none;
+      outline: none;
+    }
+
+    .searchTag button {
+      /* float: right; */
+      /* right: 10px; */
+      margin-left: 5px;
+      width: 60px;
+      height: 40px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: 1px solid red;
+      border-radius: 12px;
+    }
+
+    .info {
+      padding-left: 15%;
+      padding-right: 15%;
+      /* height: 2000px; */
+    }
+
+    /* .box {
+      height: 800px;
+    } */
+
+    .box .thing {
+      position: relative;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      border-radius: 10px;
+    }
+
+    .box .thing:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .box .thing img {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #ff7a2b;
+      border-radius: 10px;
+      margin-left: 30px;
+    }
+
+    .word {
+      margin-left: 30px;
+    }
+
+    .word .cl {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      color: #999;
+      font-size: 15px;
+    }
+
+    .word .price {
+      display: block;
+      font-size: 20px;
+      color: red;
+    }
+
+    .num {
+      position: absolute;
+      right: 23%;
+    }
+
+    .num {
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      align-items: center;
+      text-align: center;
+      width: 35px;
+      height: 35px;
+      border: 2px solid #ff7a2b;
+      border-radius: 5px;
+    }
+
+    .delete {
+      position: absolute;
+      right: 5%;
+      color: white;
+      margin-left: 90px;
+      height: 50px;
+      width: 150px;
+      background-color: red;
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      align-items: center;
+      text-align: center;
+      border: 1px solid transparent;
+      border-radius: 10px;
+    }
+
+    .thing input {
+      font-size: 25px;
+      width: 25px;
+      height: 25px;
+      margin-left: 10px;
+    }
+
+    .sum button {
+      width: 200px;
+      height: 50px;
+      border: 1px solid transparent;
+      color: white;
+      font-size: 20px;
+    }
+
+    .buyer {
+      padding-left: 15%;
+      padding-right: 15%;
+    }
+
+    .inf {
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 200px;
+      border: 2px solid transparent;
+      background-color: #ff7a2b;
+      border-radius: 10px;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .buyerInfo {
+      font-size: 25px;
+      margin-left: 40px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sum {
+      font-size: 25px;
+      display: flex;
+      align-items: center;
+    }
+
+    .wz {
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+    }
+
+    .back {
+      margin-left: 30px;
+      background-color: blue;
+      border-radius: 10px 0 0 10px;
+    }
+
+    .bill {
+      background-color: red;
+      border-radius: 0 10px 10px 0;
+      margin-right: 30px;
+    }
+
+    body {
+      position: relative;
+    }
+
+    .szl {
+      visibility: hidden;
+      position: absolute;
+      left: 30%;
+      top: 2%;
+      z-index: 2;
+      width: 700px;
+      height: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border: 2px solid transparent;
+      background-color: #f5f6fa;
+      border-radius: 10px;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .szl img {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      width: 538px;
+      height: 731px;
+    }
+
+    .m {
+      font-size: 30px;
+    }
+
+    .szl button {
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: 18px;
+      width: 200px;
+      height: 40px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 支付窗口 -->
+  <div class="szl">
+    <img src="images/wechat.jpg" alt="">
+    <div class="m"><span>请支付0元！！！</span></div>
+    <button>已支付，返回首页</button>
+  </div>
+  <!-- 统一顶部导航栏 -->
+  <div class="nav">
+    <div class="navl">
+      <span><a href="login.html"><span class="demo"></span>你好，请登录</a></span>
+      <span>|</span>
+      <span style="color: red;"><a href="reg.html"><span class="demo"></span>免费注册</a></span>
+    </div>
+    <div class="navr">
+      <span><a href="index.html"><span class="demo"></span>返回首页</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>我的订单</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>消息</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>反馈</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>设置</a></span>
+    </div>
+  </div>
+  <div class="body">
+    <!-- 商标 -->
+    <div class="top">
+      <div class="name"><img src="images/logo.jpg" alt=""><span>EZshopping</span></div>
+    </div>
+    <!-- 买家信息栏 -->
+    <div class="buyer">
+      <div class="inf">
+        <div class="buyerInfo">
+          <div class="wz">
+            <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
+            <span class="place">收货地址：浙江省绍兴市越城区</span>
+          </div>
+          <div class="wz">
+            <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
+            <span class="bname">收货人：孙哲麟</span>
+          </div>
+          <div class="wz">
+            <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
+            <span class="phone">联系电话：15857459630</span>
+          </div>
+        </div>
+        <div class="goodsInfo">
+          <div class="sum">
+            <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
+            <span>合计：￥</span>
+            <span class="summoney">0.00</span>
+            <button class="back"><span class="demo"></span> 返回购物车</button>
+            <button class="bill"><span class="demo"></span> 结算</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- 商品明细 -->
+    <div class="info">
+      <div class="box"></div>
+    </div>
+
+  </div>
+  <!-- 统一底部 -->
+  <div class="xtx_footer clearfix">
+    <div class="extra">
+      <div class="wrapper">
+        <div class="foot">
+          <p>
+            <a href="#">关于我们</a>
+            <a href="#">帮助中心</a>
+            <a href="#">售后服务</a>
+            <a href="#">配送与验收</a>
+            <a href="#">商务合作</a>
+            <a href="#">搜索推荐</a>
+            <a href="#">友情链接</a>
+          </p>
+          <p>Copyright &copy; EZshopping</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    //登录成功
+    let NAME = localStorage.getItem('username')
+    const navl = document.querySelector('.navl')
+    const rr = document.querySelector('.rr')
+    if (NAME != '') {
+      navl.innerHTML = `
+        <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
+        <span>|</span>
+        <span style="color: red;" class="change"><a href="#"><span class="demo"></span>退出</a></span>
+      `
+      document.querySelector('.change').addEventListener('click', () => {
+        localStorage.setItem('username', '')
+        localStorage.setItem('goodscart', JSON.stringify(''))
+        location.reload()
+      })
+    }
+    //渲染
+    const box = document.querySelector('.box')
+    let Good = JSON.parse(localStorage.getItem('goods'))
+    let goodsNum = +localStorage.getItem('goodsNum')
+    let billSum = +localStorage.getItem('bill')
+    const thing = document.querySelector('.thing')
+    const arr = JSON.parse(localStorage.getItem('goodsbill')) || []
+    //页面渲染函数
+    function render() {
+      const Arr = arr.map(function (ele, index) {
+        return `
+        <div class="thing">
+          <img src="${ele.picture}" alt="">
+          <div class="word">
+            <h4>${ele.p}</h4>
+            <span class="cl">${ele.name};[官方标配]</span>
+            <span class="price">￥${ele.price}</span>
+          </div>
+          <div class="num">
+            <span>x</span>
+            <span class="n">${ele.num}</span>
+          </div>
+        </div>
+        `
+      })
+      box.innerHTML = Arr.join('')
+    }
+    render()
+    document.querySelector('.summoney').textContent = billSum
+    let user = JSON.parse(localStorage.getItem(NAME))
+    document.querySelector('.wz .place').textContent = `收货地址：${user.place}`
+    document.querySelector('.wz .bname').textContent = `收货人：${user.uname}`
+    document.querySelector('.wz .phone').textContent = `联系电话：${user.phone}`
+
+    //over
+    document.querySelector('.back').addEventListener('click', () => {
+      location.href = 'cart.html'
+    })
+    document.querySelector('.bill').addEventListener('click', () => {
+      document.querySelector('.szl .m span').textContent = `请支付${billSum}元！！！`
+      document.querySelector('.szl').style.visibility = 'visible'
+    })
+    document.querySelector('.szl button').addEventListener('click', () => {
+      document.querySelector('.szl').style.visibility = 'hidden'
+      location.href = 'index.html'
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZshopping-商品详情</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?gh2378');
+      src: url('fonts/icomoon.eot?gh2378#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?gh2378') format('truetype'),
+        url('fonts/icomoon.woff?gh2378') format('woff'),
+        url('fonts/icomoon.svg?gh2378#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+
+    .demo {
+      font-family: 'icomoon';
+      font-size: 20px;
+      font-style: normal;
+      font-display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: #e4f0ff;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .xtx_footer .extra {
+      background-color: #333;
+    }
+
+    .xtx_footer .foot {
+      height: 150px;
+      padding-top: 40px;
+      text-align: center;
+      color: #999;
+      font-size: 15px;
+    }
+
+    .xtx_footer .foot p {
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .xtx_footer .foot a {
+      text-decoration: none;
+      color: #999;
+      line-height: 1;
+      padding: 0 10px 0 6px;
+      border-right: 1px solid #999;
+    }
+
+    .xtx_footer .foot a:last-child {
+      border-right: none;
+    }
+
+    /* .body {
+      padding-left: 200px;
+      padding-right: 200px;
+    } */
+    .top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+      /* width: 60%; */
+      height: 130px;
+      margin: 0 auto;
+    }
+
+    .name {
+      position: absolute;
+      left: 15%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .name img {
+      width: 80px;
+      height: 80px;
+      border: 3px solid #ff7a2b;
+      border-radius: 30px;
+    }
+
+    .name span {
+      color: #ff7a2b;
+      font: 35px 'Tahoma';
+      font-weight: bolder;
+      margin-left: 10px;
+    }
+
+
+    .nav {
+      background-color: #333333;
+      /* border: 1px solid transparent;
+      border-radius: 10px; */
+      overflow: hidden;
+      position: relative;
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .navl {
+      position: absolute;
+      left: 150px;
+    }
+
+    .navl span a {
+      color: white;
+    }
+
+    .navl span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr {
+      position: absolute;
+      right: 150px;
+    }
+
+    .navr span {
+      color: white;
+      margin: 0 8px;
+    }
+
+    .navr span a {
+      color: white;
+    }
+
+    .nav a:hover {
+      color: red;
+    }
+
+    .searchTag {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      right: 15%;
+      width: 300px;
+      height: 44px;
+      /* line-height: 44px; */
+      border: 2px solid #ff7a2b;
+      border-radius: 12px;
+    }
+
+    .searchTag .demo {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .searchTag input {
+      border: none;
+      background-color: #e4f0ff;
+      width: 200px;
+      height: 34px;
+      /* padding: 9px 0; */
+      color: #11192d;
+      font-size: 14px;
+      line-height: 34px;
+      text-indent: 12px;
+      vertical-align: middle;
+    }
+
+    .searchTag input:focus {
+      border: none;
+      outline: none;
+    }
+
+    .searchTag button {
+      /* float: right; */
+      /* right: 10px; */
+      margin-left: 5px;
+      width: 60px;
+      height: 40px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: 1px solid red;
+      border-radius: 12px;
+    }
+
+    .info {
+      padding-left: 15%;
+      padding-right: 15%;
+      /* height: 2000px; */
+    }
+
+    .box {
+      height: 800px;
+    }
+
+    .box .w a {
+      color: #999;
+    }
+
+    .box .w a:hover {
+      color: red;
+    }
+
+    .w {
+      margin-bottom: 20px;
+    }
+
+    .good {
+      position: relative;
+    }
+
+    .good .p {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border: 2px solid #ff7a2b;
+      border-radius: 10px;
+    }
+
+    .good .p img {
+      width: 400px;
+      height: 400px;
+      border: 0px solid transparent;
+      border-radius: 10px;
+    }
+
+    .good .c {
+      position: absolute;
+      left: 45%;
+    }
+
+    .c h2 {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+
+    .c .price {
+      margin-bottom: 15px;
+      font-size: 25px;
+      color: red;
+    }
+
+    .c .data .ll {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      height: 50px;
+    }
+
+    .c .data .ll .l {
+      margin-right: 20px;
+      color: #999;
+    }
+
+    .bp {
+      text-align: center;
+      width: 120px;
+      height: 35px;
+      line-height: 35px;
+      border: 2px solid #ff7a2b;
+      border-radius: 10px;
+      color: #ff7a2b;
+    }
+
+    i {
+      font-style: normal;
+    }
+
+    .smallbox {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 2px solid #ff7a2b;
+      border-radius: 5px;
+      border-collapse: collapse;
+      width: 90px;
+      height: 30px;
+      text-align: center;
+    }
+
+    .smallbox i {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      width: 25px;
+      font-size: 20px;
+      text-align: center;
+      border: 1px solid #ff7a2b;
+    }
+
+    .smallbox .down {
+      color: #999;
+    }
+
+    .c button {
+      width: 200px;
+      height: 40px;
+      outline: none;
+    }
+
+    .c .btn {
+      margin-top: 30px;
+      height: 50px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+
+    .c .buy {
+      border: 1px solid transparent;
+      border-radius: 10px 0 0 10px;
+      color: white;
+      background-color: red;
+      font-size: 18px;
+    }
+
+    .c .put {
+      border: 1px solid transparent;
+      border-radius: 0 10px 10px 0;
+      color: white;
+      background-color: #ff7a2b;
+      font-size: 18px;
+    }
+
+    .p {
+      position: relative;
+    }
+
+    .p .layer {
+      cursor: pointer;
+      position: absolute;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.2);
+      width: 200px;
+      height: 200px;
+    }
+
+    .large {
+      display: none;
+      /* background: url(images/sony2.jpg) no-repeat; */
+      z-index: 2;
+      width: 400px;
+      height: 400px;
+      left: 405px;
+      border: 2px solid #ff7a2b;
+      border-radius: 10px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 统一顶部导航栏 -->
+  <div class="nav">
+    <div class="navl">
+      <span><a href="login.html"><span class="demo"></span>你好，请登录</a></span>
+      <span>|</span>
+      <span style="color: red;"><a href="reg.html"><span class="demo"></span>免费注册</a></span>
+    </div>
+    <div class="navr">
+      <span><a href="index.html"><span class="demo"></span>返回首页</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>我的订单</a></span>
+      <span>|</span>
+      <span><a href="cart.html"><span class="demo"></span>购物车</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>消息</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>反馈</a></span>
+      <span>|</span>
+      <span><a href="#"><span class="demo"></span>设置</a></span>
+    </div>
+  </div>
+  <div class="body">
+    <!-- 商标和搜索 -->
+    <div class="top">
+      <div class="name"><img src="images/logo.jpg" alt=""><span>EZshopping</span></div>
+      <div class="searchTag">
+        <span class="demo"></span>
+        <form action="http://baidu.com">
+          <input type="text" name="ss" id="ss" placeholder="开始你的探索">
+          <button>搜索</button>
+        </form>
+      </div>
+    </div>
+    <!-- 商品渲染 -->
+    <div class="info">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="xtx_footer clearfix">
+    <div class="extra">
+      <div class="wrapper">
+        <div class="foot">
+          <p>
+            <a href="#">关于我们</a>
+            <a href="#">帮助中心</a>
+            <a href="#">售后服务</a>
+            <a href="#">配送与验收</a>
+            <a href="#">商务合作</a>
+            <a href="#">搜索推荐</a>
+            <a href="#">友情链接</a>
+          </p>
+          <p>Copyright &copy; EZshopping</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    //登录成功
+    let NAME = localStorage.getItem('username')
+    const navl = document.querySelector('.navl')
+    const rr = document.querySelector('.rr')
+    if (NAME != '') {
+      navl.innerHTML = `
+        <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
+        <span>|</span>
+        <span style="color: red;" class="change"><a href="#"><span class="demo"></span>退出</a></span>
+      `
+      document.querySelector('.change').addEventListener('click', () => {
+        localStorage.setItem('username', '')
+        localStorage.setItem('goodscart', JSON.stringify(''))
+        location.reload()
+      })
+    }
+    //渲染
+    const box = document.querySelector('.box')
+    let Good = JSON.parse(localStorage.getItem('goods'))
+    let goodsNum = +localStorage.getItem('goodsNum')
+    box.innerHTML = `
+      <div class="w" style="color: #999;">
+          <a href="index.html">首页</a> > <span style="color: #333;">${Good[goodsNum].name}</span>
+        </div>
+        <div class="good">
+          <div class="p">
+            <img src="${Good[goodsNum].picture}" alt="">
+            <div class="layer"></div>
+          </div>
+          <div class="large"></div>
+          <div class="c">
+            <h2>${Good[goodsNum].name}</h2>
+            <h3 class="price">￥${Good[goodsNum].price}</h3>
+            <div class="data">
+              <div class="ll"><span class="l">配&ensp;&ensp;&ensp;&ensp;送:</span><span class="r">快递：免运费</span></div>
+              <div class="ll"><span class="l">保&ensp;&ensp;&ensp;&ensp;障:</span><span class="r">7天无理由退还 正品保障
+                  15天价保</span></div>
+              <div class="ll"><span class="l">商品类型:</span><span class="r bp">官方标配</span></div>
+              <div class="ll">
+                <span class="l">数&ensp;&ensp;&ensp;&ensp;量:</span>
+                <div class="smallbox"><i class="down">-</i><span class="num">1</span><i class="up">+</i></div>
+                <span class="l">有货(库存${Good[goodsNum].inventory}件)</span>
+              </div>
+            </div>
+            <div class="btn">
+              <button class="buy">立刻购买</button>
+              <button class="put">加入购物车</button>
+            </div>
+          </div>
+        </div>
+    `
+    //购买数量
+    const down = document.querySelector('.smallbox .down')
+    const up = document.querySelector('.smallbox .up')
+    const num = document.querySelector('.smallbox .num')
+    down.addEventListener('click', () => {
+      if (+num.textContent === 2) {
+        down.style.color = '#999'
+      }
+      if (num.textContent > 1) {
+        num.textContent = +num.textContent - 1
+      }
+    })
+    up.addEventListener('click', () => {
+      down.style.color = 'black'
+      if (num.textContent < 9999) {
+        num.textContent = +num.textContent + 1
+      }
+    })
+    //放大镜效果
+    const middle = document.querySelector('.p')
+    const large = document.querySelector('.large')
+    large.style.background = `url(${Good[goodsNum].picture}) no-repeat`
+    middle.addEventListener('mouseenter', show)
+    middle.addEventListener('mouseleave', hide)
+    let timeId = 0
+    function show() {
+      clearTimeout(timeId)
+      large.style.display = 'block'
+    }
+    function hide() {
+      timeId = setTimeout(function () {
+        large.style.display = 'none'
+      }, 200)
+    }
+    const layer = document.querySelector('.layer')
+    middle.addEventListener('mouseenter', function () {
+      layer.style.display = 'block'
+    })
+    middle.addEventListener('mouseleave', function () {
+      layer.style.display = 'none'
+    })
+    middle.addEventListener('mousemove', function (e) {
+      let x = e.pageX - middle.getBoundingClientRect().left
+      let y = e.pageY - middle.getBoundingClientRect().top - document.documentElement.scrollTop
+      if (x >= 0 && x <= 400 && y >= 0 && y <= 400) {
+        let mx = 0, my = 0
+        if (x <= 100) mx = 0
+        if (x >= 100 && x <= 300) mx = x - 100
+        if (x > 300) mx = 200
+        if (y <= 100) my = 0
+        if (y >= 100 && y <= 300) my = y - 100
+        if (y > 300) my = 200
+        layer.style.left = mx + 'px'
+        layer.style.top = my + 'px'
+        large.style.backgroundPositionX = -2 * mx + 'px'
+        large.style.backgroundPositionY = -2 * my + 'px'
+      }
+    })
+    //加入购物车
+    const putt = document.querySelector('.put')
+    let arr = JSON.parse(localStorage.getItem('goodscart')) || []
+    putt.addEventListener('click', () => {
+      arr.push({
+        p: Good[goodsNum].p,
+        name: Good[goodsNum].name,
+        price: Good[goodsNum].price,
+        picture: Good[goodsNum].picture,
+        inventory: Good[goodsNum].inventory,
+        num: num.textContent
+      })
+      localStorage.setItem('goodscart', JSON.stringify(arr))
+      alert('已加入购物车')
+      location.reload()
+    })
+  </script>
+</body>
+
+</html>

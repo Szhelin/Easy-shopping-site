@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZshopping-注册</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: #e4f0ff;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* .xtx_footer .extra {
+      background-color: #333;
+    } */
+
+    .xtx_footer .foot {
+      height: 100px;
+      padding-top: 40px;
+      text-align: center;
+      color: #999;
+      font-size: 15px;
+    }
+
+    .xtx_footer .foot p {
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .xtx_footer .foot a {
+      text-decoration: none;
+      color: #999;
+      line-height: 1;
+      padding: 0 10px 0 6px;
+      border-right: 1px solid #999;
+    }
+
+    .xtx_footer .foot a:last-child {
+      border-right: none;
+    }
+
+    /* .body {
+      padding-left: 200px;
+      padding-right: 200px;
+    } */
+    .top {
+      position: relative;
+      width: 60%;
+      height: 180px;
+      margin: 0 auto;
+    }
+
+    .name {
+      position: absolute;
+      left: 0%;
+      top: 20%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    .name img {
+      width: 80px;
+      height: 80px;
+      border: 3px solid #ff7a2b;
+      border-radius: 30px;
+    }
+
+    .name span {
+      color: #ff7a2b;
+      font: 35px 'Tahoma';
+      font-weight: bolder;
+      margin-left: 10px;
+    }
+
+    .info {
+      margin: 0 auto;
+      height: 730px;
+      padding-top: 50px;
+      background-color: #f5f6fa;
+    }
+
+    .box {
+      height: 680px;
+      width: 55%;
+      margin: auto;
+      border: 3px solid #ff7a2b;
+      border-radius: 30px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .box h2 {
+      color: #ff7a2b;
+      margin-top: 35px;
+      margin-bottom: 35px;
+      font-size: 30px;
+    }
+
+    .box .inf {
+      border: none;
+      width: 400px;
+      height: 50px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      margin: 10px auto;
+      background-color: #f7f8fc;
+      text-indent: 0.5em;
+      font-size: 18px;
+    }
+
+    .box .inf:focus {
+      outline: 2px solid #ff7a2b;
+    }
+
+    .box input[type="submit"] {
+      background-color: #ff9b95;
+      color: white;
+      margin-top: 20px;
+      text-indent: 0em;
+      font-size: 20px;
+    }
+
+    .box .w {
+      font-size: 18px;
+    }
+
+    .box input[type="checkbox"] {
+      color: #999;
+    }
+
+    .a {
+      margin-top: 40px;
+      width: 150px;
+      text-align: right;
+      margin-left: 580px;
+      color: #999;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="body">
+    <!-- 商标 -->
+    <div class="top">
+      <div class="name"><img src="images/logo.jpg" alt=""><span>EZshopping</span></div>
+    </div>
+    <!-- 用户注册 -->
+    <div class="info">
+      <div class="box">
+        <h2>欢迎注册</h2>
+        <form action="" onsubmit="return false">
+          <span class="w">*用户名：</span><input type="text" placeholder="请设置用户名" class="inf uname"><br>
+          <span class="w">*密码：</span><input type="password" placeholder="长度不少于6个字符，不多于15个字符" class="inf psw"><br>
+          <span class="w">收货人姓名：</span><input type="text" placeholder="请填写姓名" class="inf tname"><br>
+          <span class="w">联系电话：</span><input type="text" placeholder="请填写电话" class="inf phone"><br>
+          <span class="w">收货地址：</span><input type="text" placeholder="请填写地址" class="inf place"><br>
+          <input type="submit" value="立即注册" class="inf" disabled><br>
+          <input type="checkbox" class="check">阅读并接受相关协议
+        </form>
+        <div class="a"><span>已有账号？</span><a href="login.html" style="color:red;">登录</a></div>
+      </div>
+    </div>
+  </div>
+  <!-- 统一底部 -->
+  <div class="xtx_footer clearfix">
+    <div class="extra">
+      <div class="wrapper">
+        <div class="foot">
+          <p>
+            <a href="#">关于我们</a>
+            <a href="#">帮助中心</a>
+            <a href="#">售后服务</a>
+            <a href="#">配送与验收</a>
+            <a href="#">商务合作</a>
+            <a href="#">搜索推荐</a>
+            <a href="#">友情链接</a>
+          </p>
+          <p>Copyright &copy; EZshopping</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 注册信息标准判断
+    const check = document.querySelector('.check')
+    const submit = document.querySelector('input[type="submit"]')
+    check.addEventListener('click', () => {
+      console.log(check.checked);
+      if (check.checked === false) {
+        submit.disabled = true
+        submit.style.backgroundColor = '#ff9b95'
+      }
+      else if (check.checked === true) {
+        submit.disabled = false
+        submit.style.backgroundColor = 'red'
+      }
+    })
+    const reg = /^[a-zA-Z0-9-_]{6,15}$/
+    const uname = document.querySelector('.uname')
+    const psw = document.querySelector('.psw')
+    const tname = document.querySelector('.tname')
+    const phone = document.querySelector('.phone')
+    const place = document.querySelector('.place')
+    submit.addEventListener('click', () => {
+      let flag = true
+      if (uname.value.length === 0) {
+        alert('用户名不能为空!!')
+        uname.focus()
+        flag = false
+      } else {
+        if (psw.value.length === 0) {
+          alert('密码不能为空!!')
+          psw.focus()
+          flag = false
+        } else {
+          if (reg.test(psw.value) === false) {
+            alert('密码太短，应在6~15个字符之间!!')
+            psw.focus()
+            flag = false
+          }
+        }
+      }
+      if (flag === true) {
+        alert('恭喜你 注册成功！')
+        let user = {
+          password: psw.value,
+          uname: tname.value,
+          phone: phone.value,
+          place: place.value
+        }
+        localStorage.setItem(uname.value, JSON.stringify(user))
+        location.href = 'login.html'
+      }
+    })
+
+  </script>
+</body>
+
+</html>
