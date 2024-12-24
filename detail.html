@@ -439,7 +439,7 @@
     let NAME = localStorage.getItem('username')
     const navl = document.querySelector('.navl')
     const rr = document.querySelector('.rr')
-    if (NAME != '') {
+    if (NAME != '' && NAME != null) {
       navl.innerHTML = `
         <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
         <span>|</span>

@@ -307,13 +307,14 @@
       margin-left: 10px;
     }
 
-    .sum button {
+    /* .sum button {
       width: 200px;
+      width: %;
       height: 50px;
       border: 1px solid transparent;
       color: white;
       font-size: 20px;
-    }
+    } */
 
     .buyer {
       padding-left: 15%;
@@ -334,33 +335,71 @@
     }
 
     .buyerInfo {
+      width: 45%;
       font-size: 25px;
-      margin-left: 40px;
+      margin-left: 10px;
       height: 150px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .sum {
-      font-size: 25px;
+    .goodsInfo {
+      width: 55%;
+      height: 80%;
       display: flex;
       align-items: center;
     }
 
+    .sum {
+      width: 100%;
+      height: 100%;
+      font-size: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .m {
+      width: 30%;
+      font-size: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .b {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .wz {
-      font-size: 22px;
+      width: 100%;
+      font-size: 20px;
       display: flex;
       align-items: center;
     }
 
     .back {
+      width: 40%;
+      height: 50px;
+      border: 1px solid transparent;
+      color: white;
+      font-size: 20px;
       margin-left: 30px;
       background-color: blue;
       border-radius: 10px 0 0 10px;
     }
 
     .bill {
+      width: 40%;
+      height: 50px;
+      border: 1px solid transparent;
+      border-left: 0;
+      color: white;
+      font-size: 20px;
       background-color: red;
       border-radius: 0 10px 10px 0;
       margin-right: 30px;
@@ -394,10 +433,6 @@
       border-radius: 10px;
       width: 538px;
       height: 731px;
-    }
-
-    .m {
-      font-size: 30px;
     }
 
     .szl button {
@@ -449,24 +484,29 @@
         <div class="buyerInfo">
           <div class="wz">
             <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
-            <span class="place">收货地址：浙江省绍兴市越城区</span>
+            <span class="place">收货地址：</span>
           </div>
           <div class="wz">
             <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
-            <span class="bname">收货人：孙哲麟</span>
+            <span class="bname">收货人：</span>
           </div>
           <div class="wz">
             <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
-            <span class="phone">联系电话：15857459630</span>
+            <span class="phone">联系电话：</span>
           </div>
         </div>
         <div class="goodsInfo">
           <div class="sum">
-            <span class="demo" style="font-size: 30px;margin-left: 20px;margin-right: 10px;"></span>
-            <span>合计：￥</span>
-            <span class="summoney">0.00</span>
-            <button class="back"><span class="demo"></span> 返回购物车</button>
-            <button class="bill"><span class="demo"></span> 结算</button>
+            <div class="m">
+              <span class="demo" style="font-size: 25px;margin-left: 20px;margin-right: 10px;"></span>
+              <span>合计：￥</span>
+              <span class="summoney">0.00</span>
+            </div>
+            <div class="b">
+              <button class="back"><span class="demo"></span> 返回购物车</button>
+              <button class="bill"><span class="demo"></span> 结算</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -502,7 +542,7 @@
     let NAME = localStorage.getItem('username')
     const navl = document.querySelector('.navl')
     const rr = document.querySelector('.rr')
-    if (NAME != '') {
+    if (NAME != '' && NAME != null) {
       navl.innerHTML = `
         <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
         <span>|</span>
@@ -541,25 +581,28 @@
       })
       box.innerHTML = Arr.join('')
     }
-    render()
-    document.querySelector('.summoney').textContent = billSum
-    let user = JSON.parse(localStorage.getItem(NAME))
-    document.querySelector('.wz .place').textContent = `收货地址：${user.place}`
-    document.querySelector('.wz .bname').textContent = `收货人：${user.uname}`
-    document.querySelector('.wz .phone').textContent = `联系电话：${user.phone}`
+    if (NAME != '' && NAME != null) {
+      render()
+      document.querySelector('.summoney').textContent = billSum
+      let user = JSON.parse(localStorage.getItem(NAME))
+      document.querySelector('.wz .place').textContent = `收货地址：${user.place}`
+      document.querySelector('.wz .bname').textContent = `收货人：${user.uname}`
+      document.querySelector('.wz .phone').textContent = `联系电话：${user.phone}`
 
-    //over
-    document.querySelector('.back').addEventListener('click', () => {
-      location.href = 'cart.html'
-    })
-    document.querySelector('.bill').addEventListener('click', () => {
-      document.querySelector('.szl .m span').textContent = `请支付${billSum}元！！！`
-      document.querySelector('.szl').style.visibility = 'visible'
-    })
-    document.querySelector('.szl button').addEventListener('click', () => {
-      document.querySelector('.szl').style.visibility = 'hidden'
-      location.href = 'index.html'
-    })
+      //over
+      document.querySelector('.back').addEventListener('click', () => {
+        location.href = 'cart.html'
+      })
+      document.querySelector('.bill').addEventListener('click', () => {
+        document.querySelector('.szl .m span').textContent = `请支付${billSum}元！！！`
+        document.querySelector('.szl').style.visibility = 'visible'
+      })
+      document.querySelector('.szl button').addEventListener('click', () => {
+        document.querySelector('.szl').style.visibility = 'hidden'
+        location.href = 'index.html'
+      })
+    }
+
 
   </script>
 </body>

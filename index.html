@@ -97,7 +97,7 @@
 
     .search {
       height: 100px;
-      position: relative;
+      /* position: relative; */
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -115,8 +115,11 @@
     }
 
     .name {
-      position: absolute;
-      left: 1%;
+      /* position: absolute; */
+      /* left: 1%; */
+      margin-right: 40px;
+      width: 320px;
+      height: 100px;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -136,6 +139,12 @@
       font: 35px 'Tahoma';
       font-weight: bolder;
       margin-left: 10px;
+    }
+
+    .aslongas {
+      margin-left: 40px;
+      width: 320px;
+      height: 100px;
     }
 
     .navv {
@@ -558,6 +567,7 @@
             <button>搜索</button>
           </form>
         </div>
+        <div class="aslongas"></div>
       </div>
       <!-- 侧边电梯导航 -->
       <div class="elevator">
@@ -867,7 +877,7 @@
     let NAME = localStorage.getItem('username')
     const navl = document.querySelector('.navl')
     const rr = document.querySelector('.rr')
-    if (NAME != '') {
+    if (NAME != '' && NAME != null) {
       navl.innerHTML = `
         <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
         <span>|</span>

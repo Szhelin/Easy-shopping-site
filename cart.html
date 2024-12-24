@@ -432,7 +432,7 @@
     let NAME = localStorage.getItem('username')
     const navl = document.querySelector('.navl')
     const rr = document.querySelector('.rr')
-    if (NAME != '') {
+    if (NAME != '' && NAME != null) {
       navl.innerHTML = `
         <span><a href="#"><span class="demo"></span>你好，${NAME}</a></span>
         <span>|</span>
@@ -563,21 +563,23 @@
     })
     for (let i = 0; i < choice.length; i++) {
       choose[i].addEventListener('click', function (e) {
-        if (choice[i].checked) {
-          moneySum += +arr[i].price * +arr[i].num
-          choice[i].parentNode.style.borderColor = '#ff7a2b'
-          choice[i].parentNode.style.transform = 'translateY(-2px)'
-          choice[i].parentNode.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'
-        }
-        else {
-          moneySum -= +arr[i].price * +arr[i].num
-          choice[i].parentNode.style.borderColor = 'transparent'
-          choice[i].parentNode.style.transform = 'translateY(0px)'
-          choice[i].parentNode.style.boxShadow = 'none'
-        }
-        all.checked = document.querySelectorAll('.thing input:checked').length === choice.length
         e.stopPropagation()
-        document.querySelector('.summoney').textContent = moneySum
+        if (e.target.tagName === 'INPUT') {
+          if (choice[i].checked) {
+            moneySum += +arr[i].price * +arr[i].num
+            choice[i].parentNode.style.borderColor = '#ff7a2b'
+            choice[i].parentNode.style.transform = 'translateY(-2px)'
+            choice[i].parentNode.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'
+          }
+          else {
+            moneySum -= +arr[i].price * +arr[i].num
+            choice[i].parentNode.style.borderColor = 'transparent'
+            choice[i].parentNode.style.transform = 'translateY(0px)'
+            choice[i].parentNode.style.boxShadow = 'none'
+          }
+          all.checked = document.querySelectorAll('.thing input:checked').length === choice.length
+          document.querySelector('.summoney').textContent = moneySum
+        }
       })
     }
     // for (let i = 0; i < choice.length; i++) {
